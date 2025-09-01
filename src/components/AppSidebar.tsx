@@ -50,7 +50,7 @@ export function AppSidebar() {
 
   const knowledgeItems = [
     { title: t('nav.about'), url: "/knowledge/about", icon: Info },
-    { title: t('nav.maps'), url: "/knowledge/maps", icon: Map },
+    { title: t('nav.maps'), url: "/knowledge/cards", icon: Map },
     { title: t('nav.deposits'), url: "/knowledge/deposits", icon: CreditCard },
     { title: t('nav.faq'), url: "/knowledge/faq", icon: HelpCircle },
   ];

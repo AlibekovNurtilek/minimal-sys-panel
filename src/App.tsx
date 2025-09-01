@@ -14,13 +14,14 @@ import './i18n';
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import About from "./pages/knowledge/About";
-import Maps from "./pages/knowledge/Maps";
+import Maps from "./pages/knowledge/Cards";
 import Deposits from "./pages/knowledge/Deposits";
 import FAQ from "./pages/knowledge/FAQ";
 import Schemes from "./pages/Schemes";
 import Prompts from "./pages/Prompts";
 import Staff from "./pages/Staff";
 import NotFound from "./pages/NotFound";
+import Cards from "./pages/knowledge/Cards";
 
 const queryClient = new QueryClient();
 
@@ -72,9 +73,9 @@ const App = () => (
                     <About />
                   </AppLayout>
                 } />
-                <Route path="/knowledge/maps" element={
+                <Route path="/knowledge/cards" element={
                   <AppLayout>
-                    <Maps />
+                    <Cards />
                   </AppLayout>
                 } />
                 <Route path="/knowledge/deposits" element={

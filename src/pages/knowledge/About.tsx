@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Edit3, Save } from 'lucide-react';
-import { AboutUs, getAboutInfo, updateAboutInfo } from '@/api/knowledge';
+import { getAboutInfo, updateAboutInfo } from '@/api/knowledge';
 import { useTranslation } from 'react-i18next';
 import EditBtn from '@/components/EditBtn';
+import { AboutUs } from '@/types/knowledge';
 
 type Lang = 'ru' | 'ky';
 const getValidLanguage = (lng: string): Lang =>
