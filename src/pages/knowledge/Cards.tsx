@@ -28,24 +28,36 @@ const CardsList: React.FC = () => {
     };
 
     fetchCards();
-  }, [lang]); 
+  }, [lang]);
 
   if (loading) {
-    return <div className="text-center mt-10 text-gray-500">Загрузка карт...</div>;
+    return <div className="text-center mt-10 text-gray-400">Загрузка карт...</div>;
   }
 
-  return (
-    <div className="p-6 cursor-pointer" >
-      <h2 className="text-2xl font-bold mb-6">{labels[lang].title}</h2>
+  // Темные градиенты для карточек
+  const getCardGradient = (key: string) => {
+    if (key.toLowerCase().includes('visa')) return 'bg-gradient-to-r from-blue-900 to-blue-700';
+    if (key.toLowerCase().includes('mastercard')) return 'bg-gradient-to-r from-red-900 to-yellow-800';
+    if (key.toLowerCase().includes('virtual')) return 'bg-gradient-to-r from-gray-800 to-gray-700';
+    if (key.toLowerCase().includes('elkart')) return 'bg-gradient-to-r from-green-900 to-green-700';
+    return 'bg-gradient-to-r from-purple-900 to-pink-800';
+  };
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  return (
+    <div className="p-6 min-h-screen">
+      <h2 className="text-2xl font-bold mb-6 ">{labels[lang].title}</h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {Object.entries(cards).map(([key, name]) => (
           <div
             key={key}
-            className="border rounded-xl p-4 shadow hover:shadow-lg transition-shadow duration-300 bg-white"
+            className={`rounded-2xl p-8 h-[150px] shadow-2xl text-white ${getCardGradient(
+              key
+            )} transform hover:scale-105 transition-transform duration-300`}
           >
-            <h3 className="font-semibold text-lg mb-2">{name}</h3>
-            <p className="text-gray-400 text-sm">{key}</p>
+            <h3 className="font-bold text-lg mb-2">{name}</h3>
+            <p className="text-sm opacity-70">{key}</p>
+          
           </div>
         ))}
       </div>
