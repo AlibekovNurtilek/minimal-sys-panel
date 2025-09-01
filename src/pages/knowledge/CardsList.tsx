@@ -91,7 +91,7 @@ useEffect(() => {
             onClick={() => navigate(`/cards/${encodeURIComponent(key)}`)}
           >
             <h3 className="font-bold text-lg mb-2">{card.name}</h3>
-            <p className="font-bold text-lg opacity-70">{key}</p>
+            <p className="font-bold text-lg ">{key}</p>
           </div>
         ))}
       </div>
