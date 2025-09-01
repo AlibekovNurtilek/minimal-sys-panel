@@ -87,11 +87,11 @@ useEffect(() => {
         {Object.entries(cards).map(([key, card]) => (
           <div
             key={key}
-            className={`rounded-2xl h-[140px] p-6 shadow-2xl text-white ${getCardGradient(key)} transform hover:scale-105 transition-transform duration-300 cursor-pointer`}
+            className={`rounded-2xl h-[130px] p-6 shadow-2xl text-white ${getCardGradient(key)} transform hover:scale-105 transition-transform duration-300 cursor-pointer`}
             onClick={() => navigate(`/cards/${encodeURIComponent(key)}`)}
           >
             <h3 className="font-bold text-lg mb-2">{card.name}</h3>
-            <p className="text-bold opacity-70">{key}</p>
+            <p className="font-bold text-lg opacity-70">{key}</p>
           </div>
         ))}
       </div>
