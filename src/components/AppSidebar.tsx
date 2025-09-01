@@ -8,9 +8,10 @@ import {
   Network,
   MessageSquare,
   UserCog,
-  LogOut
+  LogOut,
+  ChevronRight
 } from "lucide-react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation , useNavigate} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -30,13 +31,13 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 
 export function AppSidebar() {
+  const navigate = useNavigate();
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
   const location = useLocation();
@@ -60,14 +61,17 @@ export function AppSidebar() {
   return (
     <Sidebar className={collapsed ? "w-14" : "w-64"}>
       <SidebarHeader className="border-b border-sidebar-border p-4">
-        {!collapsed && (
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded bg-sidebar-primary flex items-center justify-center">
-              <span className="text-sidebar-primary-foreground font-bold">A</span>
+        <div className="flex justify-between">
+          {!collapsed && (
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
+              <div className="h-8 w-8 rounded bg-sidebar-primary flex items-center justify-center">
+                <span className="text-sidebar-primary-foreground font-bold">A</span>
+              </div>
+              <span className="font-semibold text-sidebar-foreground">Admin Panel</span>
             </div>
-            <span className="font-semibold text-sidebar-foreground">Admin Panel</span>
-          </div>
-        )}
+          )}
+          <LanguageToggle/>
+        </div>
       </SidebarHeader>
 
       <SidebarContent>
@@ -172,23 +176,29 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter className="border-t border-sidebar-border p-4">
-        <div className="flex items-center justify-between gap-2">
-          {!collapsed && (
-            <div className="flex items-center gap-2">
-              <ThemeToggle />
-              <LanguageToggle />
+        {user && (
+          <div className="relative flex flex-col gap-1 group">
+            <div className="flex items-center gap-2 border-b border-sidebar-border pb-2">
+              {/* Аватар пользователя */}
+              <div className="h-8 w-8 rounded-full bg-sidebar-primary flex items-center justify-center text-sidebar-primary-foreground font-bold">
+                {user.username?.[0].toUpperCase() /* первая буква имени */}
+              </div>
+              {/* Имя пользователя */}
+              <span className="text-sidebar-foreground font-medium">{user.username}</span>
             </div>
-          )}
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={logout}
-            className="h-8 hover:bg-destructive hover:text-destructive-foreground"
-          >
-            <LogOut className="h-4 w-4" />
-            {!collapsed && <span className="ml-2">{t('auth.logout')}</span>}
-          </Button>
-        </div>
+
+            {/* Logout кнопка, появляется при hover */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={logout}
+              className="absolute top-0 right-0 h-8  transition-opacity hover:bg-destructive hover:text-destructive-foreground"
+            >
+              <LogOut className="h-4 w-4" />
+              {!collapsed && <span className="ml-2">{t('auth.logout')}</span>}
+            </Button>
+          </div>
+        )}
       </SidebarFooter>
     </Sidebar>
   );

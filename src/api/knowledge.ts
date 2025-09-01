@@ -1,5 +1,6 @@
 
-const BASE_URL = 'http://localhost:8000/api/admin/knowledge';
+import {API_BASE_URL} from "@/config"
+const BASE_URL = `${API_BASE_URL}/api/admin/knowledge`;
 
 export interface AboutUs {
   bank_name: string;
