@@ -42,5 +42,23 @@
     "schemes": "Схемы",
     "prompts": "Системные промты",
     "staff": "Управление сотрудниками"
+  },
+  "deposits": {
+    "name": "Название",
+    "currency": "Валюта",
+    "nominal_amount": "Номинальная сумма",
+    "min_amount": "Минимальная сумма",
+    "term": "Срок",
+    "rate": "Процентная ставка",
+    "type": "Тип",
+    "yield_mechanism": "Механизм дохода",
+    "withdrawal": "Возможность изъятия",
+    "replenishment": "Возможность пополнения",
+    "capitalization": "Капитализация",
+    "issuer": "Эмитент",
+    "guarantee": "Гарантия",
+    "auction_frequency": "Частота аукционов",
+    "issuance_frequency": "Частота выпуска",
+    "descr": "Описание"
   }
 }

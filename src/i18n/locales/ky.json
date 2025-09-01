@@ -42,5 +42,23 @@
     "schemes": "Схемалар",
     "prompts": "Системалык командалар",
     "staff": "Кызматкерлерди башкаруу"
+  },
+  "deposits": {
+    "name": "Аты",
+    "currency": "Валюта",
+    "nominal_amount": "Номиналдык сумма",
+    "min_amount": "Минималдуу сумма",
+    "term": "Мөөнөт",
+    "rate": "Пайыздык чен",
+    "type": "Түрү",
+    "yield_mechanism": "Киреше механизми",
+    "withdrawal": "Алуу мүмкүнчүлүгү",
+    "replenishment": "Толуктоо мүмкүнчүлүгү",
+    "capitalization": "Капиталдаштыруу",
+    "issuer": "Эмитент",
+    "guarantee": "Кепилдик",
+    "auction_frequency": "Аукциондордун жыштыгы",
+    "issuance_frequency": "Чыгаруу жыштыгы",
+    "descr": "Сүрөттөмө"
   }
 }

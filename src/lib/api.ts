@@ -113,6 +113,14 @@ export interface LoansResponse {
   total: number;
 }
 
+export interface DepositsResponse {
+  deposits: Record<string, string>;
+}
+
+export interface DepositResponse {
+  [key: string]: any; // Flexible response to accept any JSON structure
+}
+
 class ApiClient {
   private baseUrl: string;
 
@@ -260,6 +268,56 @@ class ApiClient {
 
     if (!response.ok) {
       throw new Error('Failed to get customer loans');
+    }
+
+    return response.json();
+  }
+
+  async getDeposits(lang: string = 'ky'): Promise<DepositsResponse> {
+    const response = await fetch(`${this.baseUrl}/knowledge/deposits?lang=${lang}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get deposits');
+    }
+
+    return response.json();
+  }
+
+  async getDepositDetails(depositName: string, lang: string = 'ky'): Promise<DepositResponse> {
+    const response = await fetch(`${this.baseUrl}/knowledge/deposits/${depositName}?lang=${lang}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to get details for deposit ${depositName}`);
+    }
+
+    return response.json();
+  }
+
+  async updateDepositDetails(depositName: string, data: DepositResponse, lang: string = 'ky'): Promise<DepositResponse> {
+    const response = await fetch(`${this.baseUrl}/knowledge/deposits/${depositName}?lang=${lang}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({ [depositName]: data }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update deposit ${depositName}`);
     }
 
     return response.json();
