@@ -20,8 +20,8 @@ export const getAboutInfo = async (lang: string): Promise<AboutUs> => {
   return data.about_us; 
 };
 
-export const updateAboutInfo = async (about: AboutUs): Promise<AboutUs> => {
-  const response = await fetch(`${BASE_URL}/about-us`, {
+export const updateAboutInfo = async (about: AboutUs, lang: string = "ky"): Promise<AboutUs> => {
+  const response = await fetch(`${BASE_URL}/about-us?lang=${lang}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ about_us: about }), // <- сервер ожидает именно "about_us"

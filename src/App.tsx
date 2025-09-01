@@ -8,7 +8,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { AuthProvider } from "@/hooks/useAuth";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
-import './i18n';
+import "./i18n";
 
 // Pages
 import Dashboard from "./pages/Dashboard";
@@ -32,12 +32,11 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       <div className="min-h-screen flex w-full">
         <AppSidebar />
         <main className="flex-1">
-          {/* <header className="h-12 border-b border-border bg-background flex items-center px-4">
+          {/* Хедер виден только на мобилках (<768px) */}
+          <header className="h-12 border-b border-border bg-background flex items-center px-4 md:hidden">
             <SidebarTrigger />
-          </header> */}
-          <div className="p-6">
-            {children}
-          </div>
+          </header>
+          <div className="p-6">{children}</div>
         </main>
       </div>
     </SidebarProvider>
@@ -59,61 +58,94 @@ const App = () => (
           <BrowserRouter>
             <ProtectedRoute>
               <Routes>
-                <Route path="/" element={
-                  <AppLayout>
-                    <Dashboard />
-                  </AppLayout>
-                } />
-                <Route path="/users" element={
-                  <AppLayout>
-                    <Users />
-                  </AppLayout>
-                } />
-                <Route path="/users/:id" element={
-                  <AppLayout>
-                    <UserDetail />
-                  </AppLayout>
-                } />
-                <Route path="/knowledge/about" element={
-                  <AppLayout>
-                    <About />
-                  </AppLayout>
-                } />
-                <Route path="/knowledge/cards" element={
-                  <AppLayout>
-                    <CardsList />
-                  </AppLayout>
-                } />
-                <Route path="/cards/:card_name" element={
-                  <AppLayout>
-                    <Card />
-                  </AppLayout>
-                } />
-                <Route path="/knowledge/deposits" element={
-                  <AppLayout>
-                    <Deposits />
-                  </AppLayout>
-                } />
-                <Route path="/knowledge/faq" element={
-                  <AppLayout>
-                    <FAQ />
-                  </AppLayout>
-                } />
-                <Route path="/schemes" element={
-                  <AppLayout>
-                    <Schemes />
-                  </AppLayout>
-                } />
-                <Route path="/prompts" element={
-                  <AppLayout>
-                    <Prompts />
-                  </AppLayout>
-                } />
-                <Route path="/staff" element={
-                  <AppLayout>
-                    <Staff />
-                  </AppLayout>
-                } />
+                <Route
+                  path="/"
+                  element={
+                    <AppLayout>
+                      <Dashboard />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/users"
+                  element={
+                    <AppLayout>
+                      <Users />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/users/:id"
+                  element={
+                    <AppLayout>
+                      <UserDetail />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/knowledge/about"
+                  element={
+                    <AppLayout>
+                      <About />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/knowledge/cards"
+                  element={
+                    <AppLayout>
+                      <CardsList />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/cards/:card_name"
+                  element={
+                    <AppLayout>
+                      <Card />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/knowledge/deposits"
+                  element={
+                    <AppLayout>
+                      <Deposits />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/knowledge/faq"
+                  element={
+                    <AppLayout>
+                      <FAQ />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/schemes"
+                  element={
+                    <AppLayout>
+                      <Schemes />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/prompts"
+                  element={
+                    <AppLayout>
+                      <Prompts />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/staff"
+                  element={
+                    <AppLayout>
+                      <Staff />
+                    </AppLayout>
+                  }
+                />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </ProtectedRoute>

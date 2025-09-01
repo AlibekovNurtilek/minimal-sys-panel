@@ -59,7 +59,7 @@ const handleSave = async () => {
   if (!about) return;
   setSaving(true);
   try {
-    const updated = await updateAboutInfo(about); 
+    const updated = await updateAboutInfo(about, language); 
     setAbout(prev => ({
       ...prev,
       ...updated, // Обновляем все поля, пришедшие с сервера

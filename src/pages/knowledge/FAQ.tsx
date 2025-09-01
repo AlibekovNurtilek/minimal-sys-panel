@@ -206,9 +206,8 @@ export default function FAQ() {
                               {t("faq.save", "Сохранить")}
                             </Button>
                             <Button
-                              variant="outline"
                               onClick={cancelEditing}
-                              className="border-gray-300 hover:bg-gray-50"
+                              className="bg-blue-600 hover:bg-blue-700 text-white"
                             >
                               <X className="h-4 w-4 mr-2" />
                               {t("faq.cancel", "Отменить")}
