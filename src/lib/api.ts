@@ -121,6 +121,27 @@ export interface DepositResponse {
   [key: string]: any; // Flexible response to accept any JSON structure
 }
 
+export type FAQCategoriesResponse = string[];
+
+export interface FAQItem {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+export interface FAQResponse {
+  category: string;
+  items: FAQItem[];
+  page: number;
+  page_size: number;
+  total: number;
+}
+
+export interface UpdateFAQResponse {
+  status: string;
+  updated_item: FAQItem;
+}
+
 class ApiClient {
   private baseUrl: string;
 
@@ -318,6 +339,57 @@ class ApiClient {
 
     if (!response.ok) {
       throw new Error(`Failed to update deposit ${depositName}`);
+    }
+
+    return response.json();
+  }
+
+  async getFAQCategories(lang: string = 'ky'): Promise<FAQCategoriesResponse> {
+    const response = await fetch(`${this.baseUrl}/knowledge/info/categories?lang=${lang}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get FAQ categories');
+    }
+
+    return response.json();
+  }
+
+  async getFAQByCategory(category: string, lang: string = 'ky', page: number = 1, pageSize: number = 10): Promise<FAQResponse> {
+    const response = await fetch(`${this.baseUrl}/knowledge/info/${category}?lang=${lang}&page=${page}&page_size=${pageSize}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to get FAQ for category ${category}`);
+    }
+
+    return response.json();
+  }
+
+
+  async updateFAQItem(category: string, id: number, data: FAQItem, lang: string = 'ky'): Promise<UpdateFAQResponse> {
+    const response = await fetch(`${this.baseUrl}/knowledge/info/${category}/${id}?lang=${lang}`, {
+      method: 'PATCH',
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update FAQ item ${id} in category ${category}`);
     }
 
     return response.json();
