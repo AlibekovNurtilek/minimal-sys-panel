@@ -16,6 +16,28 @@ export interface User {
   role: string;
 }
 
+export interface Customer {
+  id: number;
+  first_name: string;
+  last_name: string;
+  middle_name: string | null;
+  birth_date: string;
+  passport_number: string;
+  phone_number: string;
+  email: string;
+  address: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CustomersResponse {
+  items: Customer[];
+  page: number;
+  page_size: number;
+  total: number;
+}
+
+
 class ApiClient {
   private baseUrl: string;
 
@@ -70,6 +92,21 @@ class ApiClient {
     if (!response.ok) {
       throw new Error('Logout failed');
     }
+  }
+  async getCustomers(page: number = 1, pageSize: number = 10): Promise<CustomersResponse> {
+    const response = await fetch(`${this.baseUrl}/customers?page=${page}&page_size=${pageSize}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get customers');
+    }
+
+    return response.json();
   }
 }
 
