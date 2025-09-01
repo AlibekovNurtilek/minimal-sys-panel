@@ -37,6 +37,81 @@ export interface CustomersResponse {
   total: number;
 }
 
+export interface Account {
+  id: number;
+  account_number: string;
+  account_type: string;
+  currency: string;
+  balance: number;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AccountsResponse {
+  items: Account[];
+  page: number;
+  page_size: number;
+  total: number;
+}
+
+export interface Card {
+  id: number;
+  account_id: number;
+  card_number: string;
+  card_type: string;
+  expiration_date: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CardsResponse {
+  items: Card[];
+  page: number;
+  page_size: number;
+  total: number;
+}
+
+export interface Transaction {
+  id: number;
+  from_account_id: number;
+  to_account_id: number;
+  transaction_type: string;
+  amount: number;
+  currency: string;
+  description: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TransactionsResponse {
+  items: Transaction[];
+  page: number;
+  page_size: number;
+  total: number;
+}
+
+export interface Loan {
+  id: number;
+  customer_id: number;
+  loan_type: string;
+  principal_amount: number;
+  interest_rate: number;
+  start_date: string;
+  end_date: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface LoansResponse {
+  items: Loan[];
+  page: number;
+  page_size: number;
+  total: number;
+}
 
 class ApiClient {
   private baseUrl: string;
@@ -93,6 +168,7 @@ class ApiClient {
       throw new Error('Logout failed');
     }
   }
+
   async getCustomers(page: number = 1, pageSize: number = 10): Promise<CustomersResponse> {
     const response = await fetch(`${this.baseUrl}/customers?page=${page}&page_size=${pageSize}`, {
       method: 'GET',
@@ -104,6 +180,86 @@ class ApiClient {
 
     if (!response.ok) {
       throw new Error('Failed to get customers');
+    }
+
+    return response.json();
+  }
+
+  async getCustomer(customerId: number): Promise<Customer> {
+    const response = await fetch(`${this.baseUrl}/customers/${customerId}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get customer');
+    }
+
+    return response.json();
+  }
+
+  async getCustomerAccounts(customerId: number, page: number = 1, pageSize: number = 10): Promise<AccountsResponse> {
+    const response = await fetch(`${this.baseUrl}/customers/${customerId}/accounts?page=${page}&page_size=${pageSize}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get customer accounts');
+    }
+
+    return response.json();
+  }
+
+  async getCustomerCards(customerId: number, page: number = 1, pageSize: number = 10): Promise<CardsResponse> {
+    const response = await fetch(`${this.baseUrl}/customers/${customerId}/cards?page=${page}&page_size=${pageSize}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get customer cards');
+    }
+
+    return response.json();
+  }
+
+  async getCustomerTransactions(customerId: number, page: number = 1, pageSize: number = 10): Promise<TransactionsResponse> {
+    const response = await fetch(`${this.baseUrl}/customers/${customerId}/transactions?page=${page}&page_size=${pageSize}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get customer transactions');
+    }
+
+    return response.json();
+  }
+
+  async getCustomerLoans(customerId: number, page: number = 1, pageSize: number = 10): Promise<LoansResponse> {
+    const response = await fetch(`${this.baseUrl}/customers/${customerId}/loans?page=${page}&page_size=${pageSize}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get customer loans');
     }
 
     return response.json();
