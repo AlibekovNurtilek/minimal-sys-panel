@@ -2,6 +2,9 @@ export type Lang = 'ru' | 'ky';
 
 export const labels: Record<Lang, Record<string, string>> = {
   ru: {
+    edit: 'Редактировать',
+    saveChanges: 'Сохранить изменения',
+    cancel: 'Отмена',
     currency: "Валюта",
     validity: "Срок действия",
     issuance: "Выпуск карты",
@@ -39,6 +42,9 @@ export const labels: Record<Lang, Record<string, string>> = {
     name:"Название"
   },
   ky: {
+     edit: 'Түзөтүү',
+    saveChanges: 'Өзгөртүүлөрдү сактоо',
+    cancel: 'Жокко чыгаруу',
     currency: "Валюта",
     validity: "Жарактуулук мөөнөтү",
     issuance: "Карта чыгаруу",

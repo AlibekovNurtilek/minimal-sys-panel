@@ -74,3 +74,18 @@ export const getCardByName = async (
     return null;
   }
 };
+
+
+
+export const updateCard = async (lang: string, cardName: string, cardData: Record<string, any>) => {
+  const response = await fetch(`${BASE_URL}/cards/${encodeURIComponent(cardName)}?lang=${lang}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', 'accept': 'application/json' },
+    body: JSON.stringify({ [cardName]: cardData }),
+  });
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Ошибка обновления: ${response.status} ${errText}`);
+  }
+  return response.json();
+};

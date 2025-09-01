@@ -10,12 +10,13 @@ const CardsList: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-
-  type Lang = 'ru' | 'ky';
+   type Lang = 'ru' | 'ky';
   const getValidLanguage = (lng: string): Lang =>
     lng === 'ru' || lng === 'ky' ? lng : 'ru';
 
-  const lang: Lang = getValidLanguage(i18n.language);
+const [lang, setLang] = useState<Lang>(getValidLanguage(i18n.language));
+  
+ 
 
   const labels = {
     ru: { 
@@ -29,7 +30,9 @@ const CardsList: React.FC = () => {
       error: 'Карталарды жүктөөдө ката'
     },
   };
-
+useEffect(() => {
+  setLang(getValidLanguage(i18n.language));
+}, [i18n.language]);
   useEffect(() => {
     const fetchCards = async () => {
       try {
@@ -84,11 +87,11 @@ const CardsList: React.FC = () => {
         {Object.entries(cards).map(([key, card]) => (
           <div
             key={key}
-            className={`rounded-2xl p-6 shadow-2xl text-white ${getCardGradient(key)} transform hover:scale-105 transition-transform duration-300 cursor-pointer`}
+            className={`rounded-2xl h-[140px] p-6 shadow-2xl text-white ${getCardGradient(key)} transform hover:scale-105 transition-transform duration-300 cursor-pointer`}
             onClick={() => navigate(`/cards/${encodeURIComponent(key)}`)}
           >
             <h3 className="font-bold text-lg mb-2">{card.name}</h3>
-            <p className="text-sm opacity-70">{key}</p>
+            <p className="text-bold opacity-70">{key}</p>
           </div>
         ))}
       </div>
