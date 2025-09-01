@@ -1,6 +1,7 @@
 import { AboutUs, CardDetail, CardsResponse } from "@/types/knowledge";
 
-const BASE_URL = 'http://localhost:8000/api/admin/knowledge';
+import {API_BASE_URL} from "@/config"
+const BASE_URL = `${API_BASE_URL}/api/admin/knowledge`;
 
 //AboutUs
 export const getAboutInfo = async (lang: string): Promise<AboutUs> => {
