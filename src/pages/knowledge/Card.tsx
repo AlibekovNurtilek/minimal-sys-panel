@@ -127,9 +127,21 @@ const CardDetailPage: React.FC = () => {
 
     return null;
   };
+  
+  
 const RenderEditableField: React.FC<{ name: string; label: string; value: any }> = ({ name, label, value }) => {
   if (value == null) return null;
-
+  if (name === 'descr') {
+    return (
+      <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 flex flex-col">
+        <div className="font-semibold text-gray-600 text-sm uppercase tracking-wide">{label}</div>
+        <textarea
+          {...register(name as any)}
+          className="mt-1 p-3 border rounded resize-none min-h-[150px] text-gray-900"
+        />
+      </div>
+    );
+  }
   // Фиксированные массивы (например, currency)
   if (Array.isArray(value) && name === 'currency') {
     return (
