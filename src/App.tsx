@@ -21,6 +21,7 @@ import Schemes from "./pages/Schemes";
 import Prompts from "./pages/Prompts";
 import Staff from "./pages/Staff";
 import NotFound from "./pages/NotFound";
+import UserDetail from "./pages/UserDetail";
 
 const queryClient = new QueryClient();
 
@@ -30,9 +31,9 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       <div className="min-h-screen flex w-full">
         <AppSidebar />
         <main className="flex-1">
-          <header className="h-12 border-b border-border bg-background flex items-center px-4">
+          {/* <header className="h-12 border-b border-border bg-background flex items-center px-4">
             <SidebarTrigger />
-          </header>
+          </header> */}
           <div className="p-6">
             {children}
           </div>
@@ -65,6 +66,11 @@ const App = () => (
                 <Route path="/users" element={
                   <AppLayout>
                     <Users />
+                  </AppLayout>
+                } />
+                <Route path="/users/:id" element={
+                  <AppLayout>
+                    <UserDetail />
                   </AppLayout>
                 } />
                 <Route path="/knowledge/about" element={

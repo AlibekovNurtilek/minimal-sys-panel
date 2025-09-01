@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { apiClient, CustomersResponse, Customer } from "@/lib/api";
 import { Pagination } from "@/components/Pagination";
 
@@ -12,6 +13,7 @@ export default function Users() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(10);
   const [total, setTotal] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -34,8 +36,12 @@ export default function Users() {
     setCurrentPage(page);
   };
 
+  const handleRowClick = (id: number) => {
+    navigate(`/users/${id}`);
+  };
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-foreground">{t('pages.users')}</h1>
       </div>
@@ -74,7 +80,11 @@ export default function Users() {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {customers.map((customer) => (
-                    <tr key={customer.id}>
+                    <tr
+                      key={customer.id}
+                      onClick={() => handleRowClick(customer.id)}
+                      className="cursor-pointer hover:bg-gray-100 transition-colors duration-150"
+                    >
                       <td className="px-6 py-4 whitespace-nowrap">{customer.id}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{customer.first_name}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{customer.last_name}</td>
