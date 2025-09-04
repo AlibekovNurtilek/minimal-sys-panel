@@ -8,7 +8,9 @@
     "faq": "Часто задаваемые вопросы",
     "schemes": "Инструменты MCP",
     "prompts": "Системные промты",
-    "staff": "Управление сотрудниками"
+    "staff": "Управление сотрудниками",
+    "loans": "Заявки для кредита",
+    "cards": "Заявки для карт"
   },
   "auth": {
     "login": "Вход",
@@ -18,7 +20,7 @@
     "logout": "Выйти",
     "welcome": "Добро пожаловать в админ панель"
   },
-  "common": {
+ "common": {
     "loading": "Загрузка...",
     "error": "Ошибка",
     "success": "Успешно",
@@ -96,5 +98,108 @@
         "description": "Соответствие регуляторным требованиям и внутренним стандартам."
       }
     }
-  }
+  },
+  "header": {
+    "title": "AI Банк",
+    "subtitle": "Административная панель - Заявки на кредит"
+  },
+  "table": {
+    "title": "Заявки на кредит",
+    "subtitle": "Управление и рассмотрение заявок на кредит",
+    "headers": {
+      "id": "ID",
+      "customer": "Клиент",
+      "loan_type": "Тип кредита",
+      "amount": "Сумма",
+      "term": "Срок",
+      "rate": "Ставка",
+      "status": "Статус",
+      "created": "Дата создания",
+      "actions": "Действия"
+    },
+    "months": " мес",
+    "actions": {
+      "review": "Рассмотреть"
+    }
+  },
+  "status": {
+    "pending": "В ожидании",
+    "approved": "Одобрено",
+    "rejected": "Отклонено"
+  },
+  "loan_types": {
+    "consumer_loans": "Потребительские кредиты",
+    "auto_loans": "Автокредиты",
+    "mortgage": "Ипотека"
+  },
+  "loans": {
+    "consumer_loans": "Потребительские кредиты",
+    "auto_loans": "Автокредиты",
+    "mortgage": "Ипотека",
+    "name": "Название",
+    "description": "Описание",
+    "purposes": "Цели",
+    "advantages": "Преимущества",
+    "subcategories": "Подкатегории",
+    "amount": "Сумма",
+    "term": "Срок",
+    "rate": "Процентная ставка",
+    "collateral": "Залог",
+    "commission": "Комиссия",
+    "processing": "Обработка",
+    "disbursement": "Выдача",
+    "repayment": "Погашение",
+    "purpose": "Цель",
+    "rates": "Процентные ставки",
+    "payroll": "Зарплатные проекты",
+    "non_payroll": "Без зарплатных проектов",
+    "collateral_tiers": "Уровни залога",
+    "effective_rate": "Эффективная ставка",
+    "own_funds": "Собственные средства",
+    "special_programs": "Специальные программы",
+    "special_offers": "Специальные предложения",
+    "new_car": "Новый автомобиль",
+    "used_car": "Подержанный автомобиль",
+    "age": "Возраст",
+    "percent": "Процент",
+    "partners": "Партнеры",
+    "KGS": "Сом",
+    "USD": "Доллар США",
+    "grace_period": "Льготный период",
+    "company": "Компания",
+    "requirement": "Требование"
+  },
+  "loans_stats": {
+    "ai_bank": "AI Банк",
+    "administrative_panel": "Административная панель",
+    "back_to_applications": "← Назад к заявкам",
+    "loan_application_review": "Рассмотрение заявки на кредит",
+    "application_id": "ID заявки: #",
+    "customer_information": "Информация о клиенте",
+    "full_name": "Полное имя",
+    "birth_date": "Дата рождения",
+    "passport": "Паспорт",
+    "phone": "Телефон",
+    "email": "Электронная почта",
+    "address": "Адрес",
+    "customer_since": "Клиент с",
+    "loan_details": "Детали кредита",
+    "loan_type": "Тип кредита",
+    "amount": "Сумма",
+    "term": "Срок",
+    "months": "месяцев",
+    "interest_rate": "Процентная ставка",
+    "own_contribution": "Собственный взнос",
+    "collateral": "Залог",
+    "additional_information": "Дополнительная информация",
+    "no_additional_information_available": "Дополнительная информация отсутствует",
+    "application_timeline": "Хронология заявки",
+    "submitted": "Подана",
+    "last_updated": "Последнее обновление",
+    "decision_required": "Требуется решение",
+    "review_application_prompt": "Пожалуйста, ознакомьтесь с деталями заявки выше и примите решение:",
+    "approve_application": "Одобрить заявку",
+    "reject_application": "Отклонить заявку"
+  },
+  "m": "месяц"
 }

@@ -23,6 +23,7 @@ import NotFound from "./pages/NotFound";
 import CardsList from "./pages/knowledge/CardsList";
 import Card from "./pages/knowledge/Card";
 import UserDetail from "./pages/UserDetail";
+import LoanApplicationsPage from "./pages/Loans"
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,14 @@ const App = () => (
                   element={
                     <AppLayout>
                       <Users />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/loans"
+                  element={
+                    <AppLayout>
+                      <LoanApplicationsPage />
                     </AppLayout>
                   }
                 />

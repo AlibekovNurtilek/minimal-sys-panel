@@ -8,7 +8,9 @@
     "faq": "Көп берилүүчү суроолор",
     "schemes": "MCP куралдар",
     "prompts": "Системалык промпттор",
-    "staff": "Кызматкерлерди башкаруу"
+    "staff": "Кызматкерлерди башкаруу",
+    "loans": " Насыя арыздары",
+    "cards": "Карта арыздары"
   },
   "auth": {
     "login": "Кирүү",
@@ -96,6 +98,108 @@
         "description": "Регулятордук талаптарга жана ички стандарттарга ылайыктык."
       }
     }
-  }
-
+  },
+  "header": {
+    "title": "AI Банкы",
+    "subtitle": "Административдик панель - Кредиттик арыздар"
+  },
+  "table": {
+    "title": "Кредиттик арыздар",
+    "subtitle": "Кредиттик арыздарды башкаруу жана карап чыгуу",
+    "headers": {
+      "id": "ID",
+      "customer": "Кардар",
+      "loan_type": "Кредиттин түрү",
+      "amount": "Сумма",
+      "term": "Мөөнөт",
+      "rate": "Пайыздык чен",
+      "status": "Статус",
+      "created": "Түзүлгөн күн",
+      "actions": "Аракеттер"
+    },
+    "months": " ай",
+    "actions": {
+      "review": "Карап чыгуу"
+    }
+  },
+  "status": {
+    "pending": "Күтүүдө",
+    "approved": "Бекитилди",
+    "rejected": "Четке кагылды"
+  },
+  "loan_types": {
+    "consumer_loans": "Керектөөчү кредиттер",
+    "auto_loans": "Автокредиттер",
+    "mortgage": "Ипотека"
+  },
+  "loans": {
+    "consumer_loans": "Керектөөчү кредиттер",
+    "auto_loans": "Автокредиттер",
+    "mortgage": "Ипотека",
+    "name": "Аты",
+    "description": "Сүрөттөмө",
+    "purposes": "Максаттар",
+    "advantages": "Артыкчылыктар",
+    "subcategories": "Субкатегориялар",
+    "amount": "Сумма",
+    "term": "Мөөнөт",
+    "rate": "Пайыздык чен",
+    "collateral": "Кепилдик",
+    "commission": "Комиссия",
+    "processing": "Иштетүү",
+    "disbursement": "Чыгаруу",
+    "repayment": "Төлөө",
+    "purpose": "Максат",
+    "rates": "Пайыздык чендер",
+    "payroll": "Айлык долбоорлор",
+    "non_payroll": "Айлык долбоорлорсуз",
+    "collateral_tiers": "Кепилдик деңгээлдери",
+    "effective_rate": "Эффективдүү чен",
+    "own_funds": "Өз каражаттары",
+    "special_programs": "Өзгөчө программалар",
+    "special_offers": "Өзгөчө сунуштар",
+    "new_car": "Жаңы унаа",
+    "used_car": "Колдонулган унаа",
+    "age": "Жашы",
+    "percent": "Пайыз",
+    "partners": "Өнөктөштөр",
+    "KGS": "Сом",
+    "USD": "АКШ доллары",
+    "grace_period": "Жеңилдик мезгили",
+    "company": "Компания",
+    "requirement": "Талаптар"
+  },
+  "loans_stats": {
+    "ai_bank": "AI Банк",
+    "administrative_panel": "Административдик панель",
+    "back_to_applications": "← Арыздарга кайтуу",
+    "loan_application_review": "Кредиттик арызды кароо",
+    "application_id": "Арыздын ID: #",
+    "customer_information": "Кардар жөнүндө маалымат",
+    "full_name": "Толук аты-жөнү",
+    "birth_date": "Туулган күнү",
+    "passport": "Паспорт",
+    "phone": "Телефон",
+    "email": "Электрондук почта",
+    "address": "Дареги",
+    "customer_since": "Кардар болгон мезгилден бери",
+    "loan_details": "Кредиттин чоо-жайы",
+    "loan_type": "Кредиттин түрү",
+    "amount": "Сумма",
+    "term": "Мөөнөт",
+    "months": "ай",
+    "interest_rate": "Пайыздык чен",
+    "own_contribution": "Өз салымы",
+    "collateral": "Кепилдик",
+    "additional_information": "Кошумча маалымат",
+    "no_additional_information_available": "Кошумча маалымат жок",
+    "application_timeline": "Арыздын хронологиясы",
+    "submitted": "Берилген",
+    "last_updated": "Акыркы жаңыртуу",
+    "decision_required": "Чечим талап кылынат",
+    "review_application_prompt": "Сураныч, жогорудагы арыздын чоо-жайын карап чыгып, чечим кабыл алыңыз:",
+    "approve_application": "Арызды жактыруу",
+    "reject_application": "Арызды четке кагуу"
+  },
+  "m": "ай"
 }
