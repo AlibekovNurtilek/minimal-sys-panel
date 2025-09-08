@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RequiredDocuments } from "@/types/knowledge";
 import { updateRequiredDocuments } from "@/api/knowledge";
 
@@ -50,8 +50,8 @@ const RequiredDocumentsTab: React.FC<Props> = ({ data: initialData, lang = "ru",
     setSaving(true);
     try {
       await updateRequiredDocuments(lang, data);
+      if (onUpdate) onUpdate(data); // обновляем родителя сразу
       setEditing(false);
-      if (onUpdate) onUpdate(data); // обновляем родителя
       alert("Данные успешно обновлены!");
     } catch (err) {
       console.error(err);
@@ -60,6 +60,10 @@ const RequiredDocumentsTab: React.FC<Props> = ({ data: initialData, lang = "ru",
       setSaving(false);
     }
   };
+
+useEffect(() => {
+  setData(initialData);
+}, [initialData]);
 
   return (
     <div className="space-y-6">

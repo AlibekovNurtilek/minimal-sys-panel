@@ -77,7 +77,7 @@ const LoansInfo: React.FC = () => {
 />
         )}
         {activeTab === "documents" && requiredDocuments && (
-          <RequiredDocumentsTab data={requiredDocuments} />
+          <RequiredDocumentsTab data={requiredDocuments} onUpdate={setRequiredDocuments}/>
         )}
         {activeTab === "products" && <LoanProductsTab data={loanProducts} />}
       </div>
