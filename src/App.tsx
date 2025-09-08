@@ -24,6 +24,9 @@ import CardsList from "./pages/knowledge/CardsList";
 import Card from "./pages/knowledge/Card";
 import UserDetail from "./pages/UserDetail";
 import LoanApplicationsPage from "./pages/Loans"
+import LoansInfo from "./pages/knowledge/LoansInfo";
+import LoanSubCategories from "./pages/knowledge/LoansDetailInfo";
+import LoanDetailPage from "./pages/knowledge/LoansDetailInfo";
 
 const queryClient = new QueryClient();
 
@@ -121,6 +124,22 @@ const App = () => (
                     <AppLayout>
                       <Deposits />
                     </AppLayout>
+                  }
+                />
+                 <Route
+                  path="/knowledge/loans_info"
+                  element={
+                    <AppLayout>
+                      <LoansInfo />
+                    </AppLayout>
+                  }
+                />
+                 <Route
+                    path="/knowledge/loans_info/:loan_type"
+                    element={
+                      <AppLayout>
+                        <LoanDetailPage />
+                      </AppLayout>
                   }
                 />
                 <Route

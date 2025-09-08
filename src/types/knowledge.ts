@@ -110,3 +110,123 @@ export interface CardsResponse {
 export interface CardsList {
   cards: Record<string, CardDetail>;
 }
+
+
+
+// Loans Info
+export interface LoanApplicationProcess {
+  steps: string[];
+  review_time: string;
+}
+
+export interface RequiredDocuments {
+  borrower_guarantor: string[];
+  collateral: {
+    movable_property: string[];
+    real_estate: string[];
+  };
+  note: string;
+}
+
+export interface LoanProduct {
+  type: string;
+  name: string;
+  description: string;
+  advantages: string[];
+  purposes:string[]
+}
+
+
+  export interface OwnFundsObject {
+    new_car?: string;
+    used_car?: { age: string; percent: string }[];
+  }
+
+export interface Subcategory {
+  name: string;
+  amount?: { KGS?: string; USD?: string } | string;
+  term?: string;
+  rate?: string;
+  rates?: { KGS?: string; USD?: string };
+  collateral?: string;
+  grace_period?: string;
+  advantages?: string[];
+  repayment?: string[];
+  commission?: string;
+  processing?: string;
+  disbursement?: string;
+  own_funds?: string | OwnFundsObject; 
+  purpose?: string;
+  effective_rate?: string;
+  collateral_tiers?: any[];
+
+}
+
+export interface RateItem {
+  amount: string;
+  rate: string;
+}
+
+export type RateValue = string | RateItem[];
+
+export interface Rates {
+  [currency: string]: RateValue;
+}
+
+export interface CollateralTier {
+  amount: string;
+  payroll?: string;
+  non_payroll?: string;
+  requirement?: string;
+}
+export interface LoanSubcategory {
+  name: string;
+  purpose?: string;
+  amount?: string | { KGS?: string; USD?: string };
+  term?: string;
+  rate?: string;
+  rates?: string | Rates;
+  collateral?: string | { [key: string]: string } | CollateralTier[]; // ✅ строка, объект или массив объектов
+  collateral_tiers?: CollateralTier[]; // можешь оставить для совместимости
+  commission?: string;
+  processing?: string;
+  disbursement?: string;
+  repayment?: string[];
+  own_funds?: string | OwnFundsObject; 
+  effective_rate?: string;
+  grace_period?: string;
+  advantages?: string[];
+}
+
+// Специальные программы
+export interface SpecialProgram {
+  name: string;
+  purpose: string;
+  amount: string;
+  term: string;
+  rate?: string;
+  rates?: {
+    payroll?: { amount: string; rate: string }[];
+    non_payroll?: { amount: string; rate: string }[];
+  };
+  collateral?: any; // можно уточнить, зависит от payroll/non_payroll
+  conditions?: string;
+  effective_rate?: string;
+}
+
+// Специальные предложения
+export interface SpecialOffer {
+  name: string;
+  company: string;
+  term: string;
+  rate: string;
+}
+
+
+
+
+export interface LoanUpdatePayload {
+  subcategories?: Subcategory[]; // обновленные подкатегории
+  specialPrograms?: SpecialProgram[]; // обновленные специальные программы
+  specialOffers?: Record<string, SpecialOffer[]>; // обновленные специальные предложения
+}

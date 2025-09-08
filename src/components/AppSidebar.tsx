@@ -37,6 +37,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
+import { title } from "process";
 
 export function AppSidebar() {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ export function AppSidebar() {
     { title: t('nav.about'), url: "/knowledge/about", icon: Info },
     { title: t('nav.maps'), url: "/knowledge/cards", icon: Map },
     { title: t('nav.deposits'), url: "/knowledge/deposits", icon: CreditCard },
+    {title: t('nav.loans_info'), url:"/knowledge/loans_info",icon: CreditCard },
     { title: t('nav.faq'), url: "/knowledge/faq", icon: HelpCircle },
   ];
 
