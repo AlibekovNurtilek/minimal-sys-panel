@@ -259,31 +259,26 @@ export const getSpecialPrograms=async(loan_type: string,lang:string): Promise<Sp
 }
 
 
-import { LoanUpdatePayload } from "@/types/knowledge";
 
-/**
- * Обновление данных кредита через PATCH
- * @param loanType - тип кредита
- * @param data - объект с обновленными данными
- */
-export const updateLoanData = async (loanType: string, data: LoanUpdatePayload) => {
-  try {
-    const response = await fetch(`/api/loans/${loanType}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+export const updateLoanProducts = async (
+  products: LoanProduct[],
+  lang: string = "ru"
+): Promise<LoanProduct[]> => {
+  console.log("Отправляем данные на сервер:", JSON.stringify(products)); // Логируем запрос
+  const response = await fetch(`${BASE_URL}/loans/loan-products?lang=${lang}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(products),
+  });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.detail || "Ошибка при обновлении данных кредита");
-    }
-
-    return await response.json(); // возвращаем новые данные
-  } catch (err) {
-    console.error("Ошибка при обновлении данных кредита:", err);
-    throw err;
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Ошибка при обновлении: ${errorText}`);
   }
+
+  const updatedData = await response.json();
+  console.log("Ответ сервера:", updatedData); // Логируем ответ
+  return updatedData;
 };
