@@ -53,6 +53,7 @@ export function AppSidebar() {
 
   const knowledgeItems = [
     { title: t('nav.about'), url: "/knowledge/about", icon: Info },
+    { title: t('nav.loan_know'), url: "/knowledge/loans", icon: Info },
     { title: t('nav.maps'), url: "/knowledge/cards", icon: Map },
     { title: t('nav.deposits'), url: "/knowledge/deposits", icon: CreditCard },
     { title: t('nav.faq'), url: "/knowledge/faq", icon: HelpCircle },
@@ -91,7 +92,7 @@ export function AppSidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <NavLink to="/loans" className={getNavCls}>
+                  <NavLink to="/applications/loans" className={getNavCls}>
                     <FileText className="h-4 w-4" />
                     {!collapsed && <span>{t('nav.loans')}</span>}
                   </NavLink>
@@ -99,7 +100,7 @@ export function AppSidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <NavLink to="/cards" className={getNavCls}>
+                  <NavLink to="/applications/cards" className={getNavCls}>
                     <CardIcon className="h-4 w-4" />
                     {!collapsed && <span>{t('nav.cards')}</span>}
                   </NavLink>
