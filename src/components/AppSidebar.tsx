@@ -11,7 +11,8 @@ import {
   LogOut,
   ChevronRight,
   FileText,
-  CreditCard as CardIcon
+  CreditCard as CardIcon,
+  Landmark
 } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -53,7 +54,7 @@ export function AppSidebar() {
 
   const knowledgeItems = [
     { title: t('nav.about'), url: "/knowledge/about", icon: Info },
-    { title: t('nav.loan_know'), url: "/knowledge/loans", icon: Info },
+    { title: t('nav.loan_know'), url: "/knowledge/loans", icon: Landmark },
     { title: t('nav.maps'), url: "/knowledge/cards", icon: Map },
     { title: t('nav.deposits'), url: "/knowledge/deposits", icon: CreditCard },
     { title: t('nav.faq'), url: "/knowledge/faq", icon: HelpCircle },

@@ -10,7 +10,8 @@
     "prompts": "Системалык промпттор",
     "staff": "Кызматкерлерди башкаруу",
     "loans": " Насыя арыздары",
-    "cards": "Карта арыздары"
+    "cards": "Карта арыздары",
+    "loan_know": "Насыялар"
   },
   "auth": {
     "login": "Кирүү",
@@ -140,7 +141,7 @@
     "description": "Сүрөттөмө",
     "purposes": "Максаттар",
     "advantages": "Артыкчылыктар",
-    "subcategories": "Субкатегориялар",
+    "subcategories": "Түрлөрү",
     "amount": "Сумма",
     "term": "Мөөнөт",
     "rate": "Пайыздык чен",
@@ -167,7 +168,8 @@
     "USD": "АКШ доллары",
     "grace_period": "Жеңилдик мезгили",
     "company": "Компания",
-    "requirement": "Талаптар"
+    "requirement": "Талаптар",
+    "conditions": "Шарттар"
   },
   "loans_stats": {
     "ai_bank": "AI Банк",
