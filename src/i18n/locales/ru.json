@@ -203,5 +203,14 @@
     "approve_application": "Одобрить заявку",
     "reject_application": "Отклонить заявку"
   },
-  "m": "месяц"
+  "m": "месяц",
+  "cardApplications": {
+    "title": "Управление заявками для получение карт",
+    "customer": "Клиент",
+    "cardType": "Тип карты",
+    "cardName": "Название карт",
+    "status": "Статус",
+    "createdAt": "Дата заявки",
+    "actions": "Управление"
+  }
 }

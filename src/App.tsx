@@ -149,7 +149,7 @@ const App = () => (
                     </AppLayout>
                   }
                 />
-                <Route
+                {/* <Route
                   path="/schemes"
                   element={
                     <AppLayout>
@@ -164,7 +164,7 @@ const App = () => (
                       <Prompts />
                     </AppLayout>
                   }
-                />
+                /> */}
                 <Route
                   path="/staff"
                   element={
