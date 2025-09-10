@@ -32,7 +32,7 @@ export interface Customer {
 export interface LoanApplication {
   application: Application;
   customer: Customer;
-  loan_info: any; // Using any as per requirement that loan_info has no fixed structure
+  loan_info: any;
 }
 
 export interface LoanApplicationsResponse {
@@ -48,7 +48,32 @@ export interface UpdateLoanStatusData {
 
 export interface UpdateLoanStatusResponse extends Application {}
 
-class LoanApplicationsApiClient {
+export interface CardApplication {
+  id: number;
+  customer_id: number;
+  customer_full_name: string;
+  account_id: number;
+  card_type: string;
+  card_name: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CardApplicationsResponse {
+  items: CardApplication[];
+  page: number;
+  page_size: number;
+  total: number;
+}
+
+export interface UpdateCardStatusData {
+  status: string;
+}
+
+export interface UpdateCardStatusResponse extends CardApplication {}
+
+class ApplicationsApiClient {
   private baseUrl: string;
 
   constructor(baseUrl: string = BASE_URL) {
@@ -88,6 +113,40 @@ class LoanApplicationsApiClient {
 
     return response.json();
   }
+
+  async getCardApplications(page: number = 1, page_size: number = 10): Promise<CardApplicationsResponse> {
+    const response = await fetch(`${this.baseUrl}/applications/cards?page=${page}&page_size=${page_size}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch card applications');
+    }
+
+    return response.json();
+  }
+
+  async updateCardStatus(id: number, data: UpdateCardStatusData): Promise<UpdateCardStatusResponse> {
+    const response = await fetch(`${this.baseUrl}/applications/cards/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update card application ${id}`);
+    }
+
+    return response.json();
+  }
 }
 
-export const loanApplicationsApiClient = new LoanApplicationsApiClient();
+export const applicationsApiClient = new ApplicationsApiClient();

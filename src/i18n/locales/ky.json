@@ -203,5 +203,13 @@
     "approve_application": "Арызды жактыруу",
     "reject_application": "Арызды четке кагуу"
   },
-  "m": "ай"
+  "m": "ай",
+  "cardApplications": {
+    "customer": "Кардар",
+    "cardType": "Карта тиби",
+    "cardName": "Картанын аталышы",
+    "status": "Статус",
+    "createdAt": "Арыз берилген күн",
+    "actions": "Башкаруу"
+  }
 }

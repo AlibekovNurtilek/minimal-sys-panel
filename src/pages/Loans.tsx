@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { loanApplicationsApiClient, LoanApplication, UpdateLoanStatusData } from '@/api/app';
+import { applicationsApiClient, LoanApplication, UpdateLoanStatusData } from '@/api/app';
 import { Pagination } from '@/components/Pagination';
 import { Building2, Eye } from 'lucide-react';
 import LoanApplicationDetails from '@/components/LoanDetails';
@@ -25,7 +25,7 @@ const LoanApplicationsPage: React.FC = () => {
     const fetchApplications = async () => {
       try {
         setLoading(true);
-        const response = await loanApplicationsApiClient.getLoanApplications(currentPage, pageSize);
+        const response = await applicationsApiClient.getLoanApplications(currentPage, pageSize);
         setApplications(response.items);
         setTotal(response.total);
       } catch (err) {
@@ -46,7 +46,7 @@ const LoanApplicationsPage: React.FC = () => {
   const handleStatusUpdate = async (id: number, status: 'approved' | 'rejected') => {
     try {
       const data: UpdateLoanStatusData = { status };
-      await loanApplicationsApiClient.updateLoanStatus(id, data);
+      await applicationsApiClient.updateLoanStatus(id, data);
       // Update local state to reflect the change
       setApplications(applications.map(app => 
         app.application.id === id ? { ...app, application: { ...app.application, status } } : app
