@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoanApplication } from '@/api/app';
-import { User, DollarSign, Calendar, FileText, Shield, Check, X, Building2 } from 'lucide-react';
+import { User, DollarSign, Calendar, FileText, Shield, Check, X, ArrowLeft } from 'lucide-react';
 
 interface LoanApplicationDetailsProps {
   selectedApplication: LoanApplication;
@@ -122,28 +122,17 @@ const LoanApplicationDetails: React.FC<LoanApplicationDetailsProps> = ({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Building2 className="w-8 h-8 text-blue-600" />
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">{t('loans_stats.ai_bank')}</h1>
-                <p className="text-sm text-gray-600">{t('loans_stats.administrative_panel')}</p>
-              </div>
-            </div>
-            <button
-              onClick={onBack}
-              className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
-            >
-              {t('loans_stats.back_to_applications')}
-            </button>
-          </div>
-        </div>
-      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 py-8">
 
-      <div className="max-w-5xl mx-auto px-6 py-8">
+     <button
+        onClick={onBack}
+        className="flex bg-blue-600 text-white items-center p-2 rounded-md my-2 hover:bg-blue-700 transition-colors"
+      >
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        {t('loans_stats.back_to_applications')}
+      </button>
+
         {/* Application Review Header */}
         <div className="bg-white rounded-lg shadow-sm border mb-6">
           <div className="px-6 py-4 border-b">
@@ -234,13 +223,20 @@ const LoanApplicationDetails: React.FC<LoanApplicationDetailsProps> = ({
             </div>
 
             {/* Additional Information */}
-            <div className="flex items-center mb-4">
-              <FileText className="w-5 h-5 text-purple-600 mr-2" />
-              <h3 className="text-lg font-semibold text-gray-900">{t('loans_stats.additional_information')}</h3>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-4 mb-6">
-              {renderDynamicFields(selectedApplication.loan_info)}
-            </div>
+            {selectedApplication?.loan_info && 
+            Object.keys(selectedApplication.loan_info).length > 0 && (
+              <>
+                <div className="flex items-center mb-4">
+                  <FileText className="w-5 h-5 text-purple-600 mr-2" />
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {t('loans_stats.additional_information')}
+                  </h3>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                  {renderDynamicFields(selectedApplication.loan_info)}
+                </div>
+              </>
+            )}
 
             {/* Application Timeline */}
             <div className="flex items-center mb-4">

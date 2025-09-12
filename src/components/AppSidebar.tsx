@@ -2,17 +2,13 @@ import {
   Users, 
   BookOpen, 
   Info, 
-  Map, 
-  CreditCard, 
   HelpCircle,
-  Network,
-  MessageSquare,
   UserCog,
   LogOut,
   ChevronRight,
   FileText,
   CreditCard as CardIcon,
-  Landmark
+  Banknote, WalletCards, PiggyBank
 } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -54,9 +50,9 @@ export function AppSidebar() {
 
   const knowledgeItems = [
     { title: t('nav.about'), url: "/knowledge/about", icon: Info },
-    { title: t('nav.loan_know'), url: "/knowledge/loans", icon: Landmark },
-    { title: t('nav.maps'), url: "/knowledge/cards", icon: Map },
-    { title: t('nav.deposits'), url: "/knowledge/deposits", icon: CreditCard },
+    { title: t('nav.loan_know'), url: "/knowledge/loans", icon: Banknote },
+    { title: t('nav.maps'), url: "/knowledge/cards", icon: WalletCards },
+    { title: t('nav.deposits'), url: "/knowledge/deposits", icon: PiggyBank },
     { title: t('nav.faq'), url: "/knowledge/faq", icon: HelpCircle },
   ];
 
@@ -69,7 +65,7 @@ export function AppSidebar() {
           {!collapsed && (
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
               <div className="h-8 w-8 rounded bg-sidebar-primary flex items-center justify-center">
-                <span className="text-sidebar-primary-foreground font-bold">A</span>
+                <span className="text-sidebar-primary-foreground font-bold">Ai</span>
               </div>
               <span className="font-semibold text-sidebar-foreground">Admin Panel</span>
             </div>

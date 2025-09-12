@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { apiClient, DepositsResponse } from "@/lib/api";
 import { Banknote, ExternalLink } from "lucide-react";
 import DepositDetails from "@/components/DepositDetails";
+import { PageHeader } from "@/components/PageHeader";
+import {t} from "i18next";
 
 export default function Deposits() {
   const { t, i18n } = useTranslation();
@@ -70,16 +72,11 @@ export default function Deposits() {
   }
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto p-6">
-      <div className="text-center space-y-2">
-        <h1 className="text-4xl font-bold text-blue-600">
-          {t("nav.deposits")}
-        </h1>
-        <p className="text-muted-foreground text-lg">
-          Информация о депозитах и финансовых продуктах
-        </p>
-      </div>
-
+    <div className="space-y-6 max-w-7xl mx-auto p-6">
+      <PageHeader
+          title={t('nav.deposits')}
+          description={t('dashboard.features.depositInfo.description')}
+        />
       <Card className="shadow-md border border-gray-200 bg-white">
         <CardHeader className="border-b bg-blue-50">
           <CardTitle className="flex items-center space-x-2 text-xl">

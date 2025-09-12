@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { applicationsApiClient, CardApplication, CardApplicationsResponse } from '@/api/app';
 import { Pagination } from '@/components/Pagination';
+import { PageHeader } from "@/components/PageHeader";
 
 export function CardApplicationsPage() {
   const { t } = useTranslation();
@@ -69,14 +70,11 @@ export function CardApplicationsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl text-center font-light text-gray-900 tracking-tight">
-            {t('cardApplications.title')}
-          </h1>
+        <PageHeader
+          title={t('nav.cards')}
+          description={t('dashboard.features.cardRequests.description')}
+        />
         
-        </div>
-
         {/* Error Alert */}
         {error && (
           <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-lg">

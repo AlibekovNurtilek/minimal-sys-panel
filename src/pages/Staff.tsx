@@ -6,6 +6,8 @@ import { employeesApiClient, Employee, CreateEmployeeData } from "@/api/employee
 import { Trash2, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PageHeader } from "@/components/PageHeader";
+
 import {
   Dialog,
   DialogContent,

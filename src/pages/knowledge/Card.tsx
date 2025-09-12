@@ -5,6 +5,7 @@ import { CardDetail } from '@/types/knowledge';
 import { useTranslation } from 'react-i18next';
 import { labels, Lang } from '@/constants/labels';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
+import { PageHeader } from "@/components/PageHeader";
 
 const CardDetailPage: React.FC = () => {
   const { i18n } = useTranslation();

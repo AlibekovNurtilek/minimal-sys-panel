@@ -4,6 +4,7 @@ import { applicationsApiClient, LoanApplication, UpdateLoanStatusData } from '@/
 import { Pagination } from '@/components/Pagination';
 import { Building2, Eye } from 'lucide-react';
 import LoanApplicationDetails from '@/components/LoanDetails';
+import { PageHeader } from "@/components/PageHeader";
 
 interface DynamicField {
   key: string;
@@ -54,9 +55,11 @@ const LoanApplicationsPage: React.FC = () => {
       if (selectedApplication?.application.id === id) {
         setSelectedApplication({ ...selectedApplication, application: { ...selectedApplication.application, status } });
       }
+      setShowDetails(false)
     } catch (err) {
       setError(`Failed to update application ${id}`);
     }
+    
   };
 
   // Format currency
@@ -93,20 +96,12 @@ const LoanApplicationsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center space-x-4">
-            <Building2 className="w-8 h-8 text-blue-600" />
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">AI Bank</h1>
-              <p className="text-sm text-gray-600">Administrative Panel - Loan Applications</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      
       <div className="max-w-7xl mx-auto px-6 py-8">
+        <PageHeader
+          title={t('nav.loans')}
+          description={t('dashboard.features.loanRequests.description')}
+        />
         {loading && (
           <div className="flex justify-center items-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -121,11 +116,6 @@ const LoanApplicationsPage: React.FC = () => {
 
         {!loading && !error && (
           <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
-            <div className="px-6 py-4 border-b bg-gray-50">
-              <h2 className="text-lg font-semibold text-gray-900">Loan Applications</h2>
-              <p className="text-sm text-gray-600">Manage and review loan applications</p>
-            </div>
-
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">

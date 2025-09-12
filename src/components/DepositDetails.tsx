@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { apiClient, DepositsResponse, DepositResponse } from "@/lib/api";
-import { Banknote, TrendingUp, Shield, Clock, ArrowLeft, ExternalLink, Edit3, X, Save } from "lucide-react";
+import { Card, CardContent} from "@/components/ui/card";
+import { apiClient,DepositResponse } from "@/lib/api";
+import { Banknote, TrendingUp, Shield, Clock, ArrowLeft, ExternalLink} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -211,7 +211,7 @@ export default function DepositDetails({
   const depositData = depositDetails ? Object.values(depositDetails)[0] : null;
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto p-6">
+    <div className="space-y-6 max-w-7xl mx-auto p-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <button

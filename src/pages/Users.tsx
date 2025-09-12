@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiClient, CustomersResponse, Customer } from "@/lib/api";
 import { Pagination } from "@/components/Pagination";
-import { User, Mail, Phone, ChevronRight } from "lucide-react";
+import { User, Mail, Phone, ChevronRight, ArrowLeft } from "lucide-react";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function Users() {
   const { t } = useTranslation();
@@ -63,13 +64,13 @@ export default function Users() {
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto p-6">
-      <div className="text-center space-y-2">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          {t('pages.users')}
-        </h1>
-        <p className="text-muted-foreground text-lg">Управление пользователями системы</p>
-      </div>
+      
+      <PageHeader
+        title={t('pages.users')}
+        description={t('dashboard.features.users.description')}
+      />
 
+      {/* Users Table */}
       <Card className="shadow-xl border-0 bg-gradient-to-br from-white to-gray-50/50">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-t-lg border-b">
           <CardTitle className="flex items-center space-x-2 text-xl">

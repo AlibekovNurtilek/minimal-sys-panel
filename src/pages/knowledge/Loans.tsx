@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Save, Edit3, CheckCircle, AlertCircle, Loader, ChevronDown, ChevronRight } from 'lucide-react';
 import { getLoanProductNames, getLoanProductByType, updateLoanProduct } from '@/api/knowledge';
+import { PageHeader } from "@/components/PageHeader";
+import { t } from 'i18next';
 
 type JsonEditorProps = {
   data: any;
@@ -213,21 +215,12 @@ const LoanPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
-        {/* <div className="mb-8 flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-            <Edit3 className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              AI Bank Admin
-            </h1>
-            <p className="text-gray-600">Управление базой знаний кредитных продуктов</p>
-          </div>
-        </div> */}
-
+        <PageHeader
+          title={t('nav.loan_know')}
+          description={t('dashboard.features.loanInfo.description')}
+        />
         {/* Error */}
         {error && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-3">
@@ -270,7 +263,7 @@ const LoanPage: React.FC = () => {
             <div className="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm border">
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-600">
-                  Редактируется: <span className="font-medium">{products.find(p => p.type === selectedType)?.name}</span>
+                  <span className="font-medium">{products.find(p => p.type === selectedType)?.name}</span>
                 </span>
                 {saveStatus === 'success' && (
                   <div className="flex items-center space-x-2 text-green-600">

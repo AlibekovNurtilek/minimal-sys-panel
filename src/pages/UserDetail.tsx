@@ -5,6 +5,8 @@ import Accounts from "@/components/customer/Accounts";
 import Cards from "@/components/customer/Cards";
 import Loans from "@/components/customer/Loans";
 import Transactions from "@/components/customer/Transactions";
+import { PageHeader } from "@/components/PageHeader";
+import {t} from "i18next";
 
 export default function UserDetail() {
   const { id } = useParams<{ id: string }>();
@@ -38,7 +40,9 @@ export default function UserDetail() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Customer Details</h1>
+      <PageHeader
+        title={t('dashboard.features.userDetail.title')}
+      />
 
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}

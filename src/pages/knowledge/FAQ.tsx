@@ -6,6 +6,8 @@ import { Pagination } from "@/components/Pagination";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Edit3, Save, X } from "lucide-react";
+import { PageHeader } from "@/components/PageHeader";
+import {t} from "i18next"
 
 export default function FAQ() {
   const { t, i18n } = useTranslation();
@@ -100,12 +102,10 @@ export default function FAQ() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-semibold text-gray-900 mb-2">
-            {t("nav.faq")}
-          </h1>
-        </div>
+
+        <PageHeader
+          title={t('nav.faq')}
+        />
 
         {/* Categories */}
         <div className="mb-8">
@@ -134,7 +134,7 @@ export default function FAQ() {
                       setEditingItemId(null);
                     }}
                   >
-                    {tab.label}
+                    {t(`faq.${tab.label}`)}
                     
                     {selectedCategory === tab.id && (
                       <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full" />
